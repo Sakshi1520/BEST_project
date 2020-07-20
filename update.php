@@ -1,7 +1,14 @@
 <?php
-include 'connect.php'
-?>
+@session_start();
+include 'connect.php';
 
+if(isset($_POST['submit']))
+{
+    $regis_no=$_POST['submit'];
+    $_SESSION['regis_no']=$regis_no;
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,7 +32,7 @@ box-shadow: 10px 10px 25px 0px rgba(221,221,221,1);
   }
   button.mybtn {
       display: block;
-      width: 80%;
+      width: 6rem;
       height: 40px;
       border-radius: 25px;
       outline: none;
@@ -33,7 +40,7 @@ box-shadow: 10px 10px 25px 0px rgba(221,221,221,1);
       text-align: center;
       background-image: linear-gradient(to right, #FA0204, #f0cb35,#f0cb35);
       background-size: 200%;
-      font-size: 0.8rem;
+      font-size: 1rem;
       font-weight:400;
       color: #fff;
       font-family: 'Poppins', sans-serif;
@@ -55,28 +62,68 @@ box-shadow: 0px 10px 15px -8px rgba(203,203,203,1);
       -moz-box-shadow: 10px 10px 18px -4px rgba(0, 0, 0, 0.75);
       box-shadow: 10px 10px 18px -4px rgba(0, 0, 0, 0.75);
     }
-    @media screen and (max-width:991px){
-      button.mybtn{width:100%; border-radius: 17px;}
-    }
-</style>
 
+    .form-control{
+        border-top: 0px;
+        border-left: 0px;
+        border-right: 0px;
+        
+    }
+  
+</style>
 </head>
 <body>
 <nav class="navbar navbar-light bg-white sticky-top justify-content-around ">
   <img src="logo.png" width="80" height="80" alt="">
   <ul class="navbar-nav">
         <li class="nav-item">
-            <h4>PATIENT DETAILS LIST</h4>
+            <h4>DAILY UPDATES</h4>
         </li>
    </ul>
-   <a href="index"><button class="btn" style="background-color:#FA0204;color:#fff;">BACK</button></a>
+   <a href="table.php"><button class="btn" style="background-color:#FA0204;color:#fff;">BACK</button></a>
 </nav>
-
 
 <div class="container jumbotron-fluid">
 
-
-<div id ="content">
+<div class="card">
+<form method="POST" action="update.php">
+        <div class="row" style="margin:2rem;">
+            <div class="col-md-3">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" >DATE</span>
+                        </div>
+                        <input type="date" class="form-control" name="date" required >
+                    </div>
+            </div>
+            <div class="col-md-9">
+                    <div class="input-group mb-3">
+                        <!-- <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">UPDATE</span>
+                        </div> -->
+                        <input type="text" name="daily" class="form-control" placeholder="Please enter the daily update here" required >
+                    </div>
+            </div>
+        </div>
+        <div class="d-flex justify-content-center">
+            <div style="text-align: center;">
+                <button type="submit" name="up" value="submit" class="mybtn" style="border-radius: 24px;">SUBMIT </button>
+            </div>
+        </div>
+</form>
+<br>
+</div>
+<?php
+if(isset($_POST['up']))
+ { $regis_no=$_SESSION['regis_no'];
+   $com_id="tdfs";
+   $date=$_POST['date'];
+   $daily=$_POST['daily'];
+   $query_insert="INSERT INTO `updates`(`regis_no`, `com_id`, `date`, `daily`) VALUES ('$regis_no','$com_id','$date','$daily')";
+   $res_insert=mysqli_query($conn,$query_insert);
+ }
+ ?>
+<br>
 
 <div class="card">
             <div class="card-body table-responsive">
@@ -84,65 +131,61 @@ box-shadow: 0px 10px 15px -8px rgba(203,203,203,1);
                     <thead>
                       <tr>
                         
-                        <th scope="col">REGISTRATION NO.</th>
-                        <th scope="col">CHEQUE NO</th>
-                        <th scope="col">NAME</th>
-                        <th scope="col">AGE</th>
-                        <th scope="col">CONTACT</th>
-                        <th scope="col">EDIT FORM</th>
-                        <th scope="col">DAILY UPDATES</th>
+                        <!-- <th scope="col">REGISTRATION NO.</th> -->
+                        
+                        <th scope="col">DATE</th>
+                        <th scope="col">UPDATE</th>
+                        
+                      
                       </tr>
                     </thead>
 </tbody>
  <?php
 //  WHERE unique_id='$unique_id'
-$query="SELECT * FROM `staff_details`";
+$query="SELECT * FROM `updates` WHERE `regis_no`='$regis_no' ";
 $res=mysqli_query($conn,$query);
 if(mysqli_num_rows($res)>0)
 {
             while($row=mysqli_fetch_assoc($res))
             {
-                    $cheque_no=$row['cheque_no'];
-                    $regis_no=$row['regis_no'];
-                    $name=$row['name'];
-                    $age=$row['age'];
-                    $contact=$row['mobile_no'];
+                    // $regis_no=$row['regis_no'];
+                    $date=$row['date'];
+                    $daily=$row['daily'];
+                    // echo date("d/m/Y")."<br />";
+                    $date1 = strtotime($date);
+                    $dis= date('d/m/Y', $date1);
+
                     
 
                     echo "<tr>";
                     
-                    echo "<td>$regis_no</td>";
-                    echo "<td>$cheque_no</td>";
-                    echo "<td>$name</td>";
-                    echo "<td>$age</td>";
-                    echo "<td>$contact</td>";?>
-                    <form action="edit.php" method="POST">
-                    <?php
-                    echo "<td><div class='d-flex justify-content-around'>
-                    <button type='submit' class='mybtn' name='submit' value='$regis_no' >EDIT
-                    </div></td>";
-                    ?>
-                    </form>
-
-                    <form action="update.php" method="POST">
-                    <?php
-                    echo "<td><div class='d-flex justify-content-around'>
-                    <button type='submit' class='mybtn' name='submit' value='$regis_no' >UPDATE
-                    </div></td>";
-                    echo "</tr>";
-                    ?>
-                    </form>
-                    <?php
+                    // echo "<td>$regis_no</td>";
+                    echo "<td>$dis</td>";
+                   
+                    echo "<td>$daily</td>";
+                    
+                   
+                
             }
 }
 else
 {
-    echo "<tr align='center'><td>-</td><td>-</td><td>-</td><td> No patient has been registered yet </td><td>-</td><td>-</td></tr>";
+    echo "<tr align='center'><td>-</td><td> No updates yet </td><td>-</td></tr>";
 }
+
+
+
+
+
+// main vala bracket
 ?>
 
 </tbody>
 </table>
+</div>
+</div>
 </form>
+
+
 </body>
 </html>
