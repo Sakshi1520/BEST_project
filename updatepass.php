@@ -4,41 +4,83 @@ ob_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Update password</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>SB Admin 2 - Forgot Password</title>
+
+  <!-- Custom fonts for this template-->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+  <!-- Custom styles for this template-->
+  <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
 </head>
-<body>
-<form action="" method="POST">
-   <h3>CHANGE PASSWORD</h3>
-        <div class="form-group row">
-            <label for="otp" class="col-sm-2 col-form-label">OTP </label>
-            <div class="col-sm-10">
-            <input type="text" name="eotp" class="form-control" id="otp" >
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="new" class="col-sm-2 col-form-label">New password</label>
-            <div class="col-sm-10">
-            <input type="text" name="new" class="form-control" id="new" >
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="confirm" class="col-sm-2 col-form-label">Confirm password</label>
-            <div class="col-sm-10">
-            <input type="text" name="confirm" class="form-control" id="confirm">
-            </div>
-        </div>
-        <center>
-        <button type="submit" name="change" class="btn btn-primary mb-2">SUBMIT</button>
-        </center>
-</form>
 
-<?php
+<body style="background: linear-gradient(to right, #FF4E50 ,#F9D423); ">
+<br>
+
+  <div class="container">
+
+    <!-- Outer Row -->
+    <div class="row justify-content-center">
+
+      <div class="col-xl-10 col-lg-12 col-md-9">
+
+        <div class="card o-hidden border-0 shadow-lg my-5" >
+          <div class="card-body p-0">
+            <!-- Nested Row within Card Body -->
+            <div class="row">
+              <div class="col-lg-6 d-none d-lg-block bg-password-image"></div>
+              <div class="col-lg-6">
+                <div class="p-5">
+                  <div class="text-center">
+                    <h1 class="h4 text-gray-900 mb-2">Forgot Your Password?</h1>
+                    <p class="mb-4">We get it, stuff happens. Just enter your email address below and we'll send you an OTP to reset your password!</p>
+                  </div>
+                  <form class="user" action="" method="POST">
+                    <div class="form-group">
+                      <input type="text" class="form-control form-control-user" id="exampleInputEmail" name="eotp" aria-describedby="emailHelp" name="unique_id" placeholder="Enter your One Time Password">
+                    </div>
+                    <div class="form-group">
+                      <input type="password" class="form-control form-control-user" id="exampleInputEmail" name="new" aria-describedby="emailHelp" name="unique_id" placeholder="Enter your new password">
+                    </div>
+                    <div class="form-group">
+                      <input type="password" class="form-control form-control-user" id="exampleInputEmail" name="confirm" aria-describedby="emailHelp" name="email" placeholder="Confirm your passowrd">
+                    </div>
+                    <br>
+                    <button type="submit" name="change" class="btn btn-primary btn-user btn-block">
+                      Reset Password
+                    </button>
+                  </form>
+                  <hr>
+                  <!-- <div class="text-center">
+                    <a class="small" href="register.html">Create an Account!</a>
+                  </div> -->
+                  <!-- <div class="text-center">
+                    <a class="small" href="committee_login.html">Already have an account? Login!</a>
+                  </div> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <?php
     include 'connect.php';
     // $conn = db_connection();
     if (isset($_POST['change']))
@@ -58,7 +100,7 @@ ob_start();
                
                 
                 // $hashpassword = md5($new);
-                   $query = "UPDATE `committee_members` SET `password`='$new' WHERE `unique_id`='$unique_id'";
+                   $query = "UPDATE `committee_members` SET `password`='$new' WHERE `com_id`='$unique_id'";
                     $res = mysqli_query($conn, $query);
                     if ($res) 
                     {
@@ -87,5 +129,21 @@ ob_start();
 
 
     ?>
+  
+  <?php
+  ob_flush();
+  ?>
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="js/sb-admin-2.min.js"></script>
+
 </body>
+
 </html>

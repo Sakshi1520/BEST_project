@@ -1,17 +1,16 @@
-<?php
+	<?php
 	$username="root"; //username for database
-	$password=""; //database password
+	$password="root"; //database password
 	$hostname="localhost"; //hostname
-	$dbname="best"; //database name
+	$dbname="bestnew"; //database name
 	$teston = true;
 	
 							//localhost,root
-	$conn = mysqli_connect($hostname,$username,$password,$dbname)
+	$conn = mysqli_connect($hostname,$username,$password)
 		or die("error connecting to database"); //make connection
 	//echo "Connected to MySQL<br>";
-	// mysqli_select_db($conn,$dbname) //select database
-	// 	or die("Could not select examples");
-	// //echo "Database selected<br>";
-	// // echo("connected");
-	// return $conn;
+	mysqli_select_db($conn,$dbname) //select database
+		or die("Could not select examples");
+	//echo "Database selected<br>";
+	// echo("connected");
 ?>

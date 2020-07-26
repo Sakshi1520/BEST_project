@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B.E.S.T. Covid19 Data Entry Portal</title>
+
+
+    <!-- CSS only -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+
+    <!-- JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+        
+
+    <!-- DateTime Picker CDN -->
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script type="text/javascript" src="lib/bootstrap-datepicker.js"></script>
+    <link rel="stylesheet" type="text/css" href="lib/bootstrap-datepicker.css" >
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- DateTime Picker JS -->
+    <script>
+        $(function() {
+            $('.dates #usr1').datepicker({
+                'format': 'yyyy-mm-dd',
+                'autoclose': true
+            });
+        });
+    </script>
+
+</head>
+<body>
+    <form action="staff_register.php" method="POST" id="myform">
+        <div style="text-align: right;">
+            <button type="button" class="btn btn-dark" onclick="window.location.href='Overall-List.php';">Back</button>
+        </div>
+        <h1 style="text-align: center; vertical-align: top;">Add the details below </h1>
+        <div class="form-row">
+            <!-- <div class="form-group col-md-1">
+                <label for="inputnumber">Reg. No.</label>
+                <input type="" class="form-control" id="inputnumber" name="regis_no">
+            </div> -->
+            <div class="form-group col-md-5">
+                <label for="inputEmail4">Name</label>
+                <input type="text" class="form-control" id="inputName4" name="name">
+            </div>
+            <div class="form-group col-md-1">
+                <label for="inputnumber">Age</label>
+                <input type="number" class="form-control" id="inputnumber" name="age">
+            </div>
+            <div class="form-group col-md-2">
+                <label for="inputState">Sex</label>
+                <select id="inputState" class="form-control" name="sex">
+                    <option selected>Choose...</option>
+                    <option>Female</option>
+                    <option>Male</option>
+                </select>
+            </div>
+            <div class="form-group col-md-2">
+                <label for="inputnumber">Cheque No.</label>
+                <input type="" class="form-control" id="inputnumber"name="cheque_no">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-2">
+                <label for="inputnumber">Mobile No.</label>
+                <input type="" class="form-control" id="inputnumber" name="mobile_no">
+            </div>
+            <div class="form-group col-md-2">
+                <label for="inputEmail4">Designation</label>
+                <input type="text" class="form-control" id="inputtext4" name="designation">
+            </div>
+            <div class="form-group col-md-2">
+                <label for="inputEmail4">Department</label>
+                <input type="text" class="form-control" id="inputtext4" name="department">
+            </div>
+            <div class="form-group col-md-2">
+                <label for="inputEmail4">Depot</label>
+                <input type="text" class="form-control" id="inputtext4" name="depot">
+            </div>
+            <div class="form-group col-md-3">
+                <label for="inputEmail4">Addictions</label>
+                <input type="text" class="form-control" id="inputtext4" name="addictions">
+            </div>
+        </div>
+        <div class="form-row">
+            <label for="inputAddress">Res. Address</label>
+            <input type="text" class="form-control" id="inputAddress" name="address">    
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <label for="inputEmail4">Co-morbidity</label>
+                <input type="text" class="form-control" id="inputtext4" name="comorbidity">
+            </div>
+            <div class="dates">
+                <label>Last working Date</label>
+                <input type="text" style="width:200px;" class="form-control" id="usr1" name="last_working" placeholder="YYYY-MM-DD" autocomplete="off" >
+            </div>
+            <div class="form-group col-md-3">
+                <label for="inputEmail4">Travel History</label>
+                <input type="text" class="form-control" id="inputtext4" name="travel_history">
+            </div>
+            <div class="form-group col-md-3">
+                <label for="inputEmail4">Exposure</label>
+                <input type="text" class="form-control" id="inputtext4" name="exposure">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="inputEmail4">Symptoms</label>
+                <input type="text" class="form-control" id="inputtext4" name="symptoms">
+            </div>
+            <div class="dates">
+                <label>Date of Testing</label>
+                <input type="text" style="width:200px;" class="form-control" id="usr1" name="testing_date" placeholder="YYYY-MM-DD" autocomplete="off" >
+            </div>
+            <div class="form-group col-md-3">
+                <label for="inputState">Hospital Name</label>
+                <select id="inputState" class="form-control" name="hospital">
+                    <option selected>Choose...</option>
+                    <option>...</option>
+                </select>
+            </div>
+            <div class="dates">
+                <label>Date of Addmission</label>
+                <input type="text" style="width:200px;" class="form-control" id="usr1" name="admission_date" placeholder="YYYY-MM-DD" autocomplete="off" >
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-1">
+                <label for="inputState">Oxygen</label>
+                <select id="inputState" class="form-control" name="oxygen">
+                    <option selected>No</option>
+                    <option>Yes</option>
+                </select>
+            </div>
+            <div class="form-group col-md-2">
+                <label for="inputState">Discharge/Expire</label>
+                <select id="inputState" class="form-control" name="discharge">
+                    <option selected>Choose...</option>
+                    <option>Discharge</option>
+                    <option>Expire</option>
+                </select>
+            </div>
+            <div class="dates">
+                <label>Date of Discharge/Expire</label>
+                <input type="text" style="width:200px;" class="form-control" id="usr1" name="dis_date" placeholder="YYYY-MM-DD" autocomplete="off" >
+            </div>
+            <div class="form-group col-md-2">
+                <label for="inputnumber">Discharge No.</label>
+                <input type="" class="form-control" id="inputnumber" name="dis_no">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="inputEmail4">Family Details</label>
+                <input type="text" class="form-control" id="inputtext4" name="family">
+            </div>
+        </div>
+        <div class="form-row">
+            <label for="inputAddress">Followup</label>
+            <input type="text" class="form-control" id="inputAddress" name="followup">    
+        </div>
+        <div style="text-align: center;">
+            <button type="submit" class="btn btn-success" id="submit" name="submit">Update</button>
+        </div>
+    </form>
+
+    <script type="text/javascript">
+
+        $(document).ready(function(){
+
+            let form = $('#myform');
+            $('#submit').click(function(){
+                $.ajax({
+                    url: form.attr("action"),
+                    type: 'post',
+                    data: $("myform input").serialize(),
+                    success: function(data){
+                        console.log(data);
+                    }
+                });
+            });
+        });
+
+    </script>
+
+
+</body>
+</html>
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Document</title>
+</head>
+    <body>
+        <h1>REGISTER</h1>
+        <div class="col-lg-4 m-auto">
+            <form id="myform" action="staff_register.php" method="post">
+            <div class="form-group">
+                <label for="firstname">Firstname</label>
+                <input type="text" class="form-control" name="firstname" placeholder="Firstname">
+            </div>
+            <div class="form-group">
+                <label for="lastname">Lastname</label>
+                <input type="text" class="form-control" name="lastname" placeholder="lastname">
+            </div>
+
+            
+            
+            <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control" name="pwd" placeholder="Password">
+            </div>
+            
+            <button type="submit" class="btn btn-primary" name="submit" id="submit">Submit</button>
+            </form>
+        </div>    
+
+
+        <script type="text/javascript">
+
+            $(document).ready(function(){
+
+                let form = $('#myform');
+                $('#submit').click(function(){
+                    $.ajax({
+                        url: form.attr("action"),
+                        type: 'post',
+                        data: $("myform input").serialize(),
+                        success: function(data){
+                            console.log(data);
+                        }
+                    });
+                });
+            });
+
+        </script>
+
+
+    </body>
+</html> -->
+
+
+
+
