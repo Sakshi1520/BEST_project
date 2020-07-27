@@ -118,6 +118,11 @@ box-shadow: 7px 10px 18px -15px rgba(0,0,0,0.75);
           <i class="fas fa-fw fa-chart-area"></i>
           <span>Expired List</span></a>
       </li>
+      <li class="nav-item">
+      <a class="nav-link" href="readmit.php">
+        <i class="fas fa-fw fa-chart-area"></i>
+        <span>Readmit List</span></a>
+      </li>
 
 
 

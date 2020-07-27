@@ -94,6 +94,11 @@ $result = mysqli_query($conn,$query);
           <i class="fas fa-fw fa-chart-area"></i>
           <span>Expired List</span></a>
       </li>
+      <li class="nav-item">
+      <a class="nav-link" href="readmit.php">
+        <i class="fas fa-fw fa-chart-area"></i>
+        <span>Readmit List</span></a>
+      </li>
       
 
      

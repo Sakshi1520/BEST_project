@@ -308,6 +308,15 @@ body {
           </div>
         </div>
       </a>
+      <a href="readmit.php" style="text-decoration: none;">
+        <div class="card">
+          <div class="circle c-2"><i class="fas fa-check-circle"></i></div>
+          <div class="info">
+            <h3>Readmit List</h3>
+            <p>Card design with hover effect by using pure CSS</p>
+          </div>
+        </div>
+        </a>
       <a href="auth_members.php" style="text-decoration: none;">
         <div class="card">
           <div class="circle c-2"><i class="fas fa-check-circle"></i></div>
@@ -317,16 +326,7 @@ body {
           </div>
         </div>
         </a>
-        <!-- <a href="Expired-List.php" style="text-decoration: none;">
-        <div class="card">
-          <div class="circle c-3"><i class="fas fa-book-dead"></i></div>
-          <div class="info">
-            <h3>Expired List</h3>
-            <p>Card design with hover effect by using pure CSS</p>
-          </div>
-        </div>
-      </a>
- -->
+      
 
 
 <!-- partial -->
