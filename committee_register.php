@@ -9,11 +9,9 @@ if(isset($_POST['register'])){
     $pwd = $_POST['pwd'];
     $email = $_POST['email'];
     // echo $pwd;
-
-    // $encrypted = hash('sha512', $pwd);
-    // echo $pwd;
-    // $query = "insert into `committee_members` ('unique_id', 'firstname', 'lastname', 'password') values ('$uniqueid', '$firstname', '$lastname', '$pwd' )";
-    $query = "INSERT INTO `committee_members`(`com_id`, `name`, `phone`, `password`,`email`) VALUES ('$cheque', '$name', '$phone', '$pwd','$email')";
+    $hash = password_hash($pwd, PASSWORD_BCRYPT);
+    // echo $hash;
+    $query = "INSERT INTO `committee_members`(`com_id`, `name`, `phone`, `password`,`email`) VALUES ('$cheque', '$name', '$phone', '$hash','$email')";
     $result = mysqli_query($conn,$query);
     if($result)
     {
