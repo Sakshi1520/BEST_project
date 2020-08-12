@@ -9,9 +9,9 @@ if(isset($_POST['register'])){
     $pwd = $_POST['pwd'];
     $email = $_POST['email'];
     // echo $pwd;
-    $hash = password_hash($pwd, PASSWORD_BCRYPT);
+    // $hash = password_hash($pwd, PASSWORD_BCRYPT);
     // echo $hash;
-    $query = "INSERT INTO `committee_members`(`com_id`, `name`, `phone`, `password`,`email`) VALUES ('$cheque', '$name', '$phone', '$hash','$email')";
+    $query = "INSERT INTO `committee_members`(`com_id`, `name`, `phone`, `password`,`email`) VALUES ('$cheque', '$name', '$phone', '$pwd','$email')";
     $result = mysqli_query($conn,$query);
     if($result)
     {
